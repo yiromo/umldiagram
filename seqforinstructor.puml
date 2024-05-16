@@ -1,0 +1,53 @@
+@startuml
+
+actor Instructor
+participant "LMS System" as LMS
+
+Instructor -> LMS: Login
+activate LMS
+LMS -> Instructor: Show Login Form
+Instructor -> LMS: Submit Credentials
+LMS -> LMS: Authenticate User
+alt authentication successful
+    LMS -> Instructor: Login Successful
+else authentication failed
+    LMS -> Instructor: Login Failed
+end
+deactivate LMS
+
+Instructor -> LMS: Create Course
+activate LMS
+LMS -> Instructor: Show Create Course Form
+Instructor -> LMS: Submit Course Details
+LMS -> LMS: Save Course Details
+LMS -> Instructor: Course Created Confirmation
+deactivate LMS
+
+Instructor -> LMS: Upload Materials
+activate LMS
+LMS -> Instructor: Show Course List
+Instructor -> LMS: Select Course
+LMS -> Instructor: Show Upload Materials Form
+Instructor -> LMS: Submit Materials
+LMS -> LMS: Save Materials
+LMS -> Instructor: Materials Uploaded Confirmation
+deactivate LMS
+
+Instructor -> LMS: Grade Assignment
+activate LMS
+LMS -> Instructor: Show Course List
+Instructor -> LMS: Select Course
+LMS -> Instructor: Show Assignments
+Instructor -> LMS: Select Assignment
+LMS -> Instructor: Show Student Submissions
+Instructor -> LMS: Grade Submission
+LMS -> LMS: Save Grade
+LMS -> Instructor: Grade Saved Confirmation
+deactivate LMS
+
+Instructor -> LMS: Logout
+activate LMS
+LMS -> Instructor: Confirm Logout
+deactivate LMS
+
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+
+actor Student
+participant "LMS System" as LMS
+
+Student -> LMS: Login
+activate LMS
+LMS -> Student: Show Login Form
+Student -> LMS: Submit Credentials
+LMS -> LMS: Authenticate User
+alt authentication successful
+    LMS -> Student: Login Successful
+else authentication failed
+    LMS -> Student: Login Failed
+end
+deactivate LMS
+
+Student -> LMS: Enroll in Course
+activate LMS
+LMS -> Student: Show Course List
+Student -> LMS: Select Course
+LMS -> LMS: Enroll Student in Course
+LMS -> Student: Enrollment Confirmation
+deactivate LMS
+
+Student -> LMS: View Course Materials
+activate LMS
+LMS -> Student: Show Course Materials
+Student -> LMS: Select Material
+LMS -> LMS: Retrieve Material
+LMS -> Student: Display Material
+deactivate LMS
+
+Student -> LMS: Take Quiz
+activate LMS
+LMS -> Student: Show Available Quizzes
+Student -> LMS: Select Quiz
+LMS -> LMS: Retrieve Quiz Questions
+LMS -> Student: Display Quiz Questions
+Student -> LMS: Submit Answers
+LMS -> LMS: Grade Quiz
+LMS -> Student: Show Quiz Results
+deactivate LMS
+
+Student -> LMS: Logout
+activate LMS
+LMS -> Student: Confirm Logout
+deactivate LMS
+
+@enduml

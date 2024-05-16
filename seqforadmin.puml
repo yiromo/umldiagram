@@ -1,0 +1,39 @@
+@startuml
+
+actor Administrator
+participant "LMS System" as LMS
+
+Administrator -> LMS: Login
+activate LMS
+LMS -> Administrator: Show Login Form
+Administrator -> LMS: Submit Credentials
+LMS -> LMS: Authenticate User
+alt authentication successful
+    LMS -> Administrator: Login Successful
+else authentication failed
+    LMS -> Administrator: Login Failed
+end
+deactivate LMS
+
+Administrator -> LMS: Manage Users
+activate LMS
+LMS -> Administrator: Show User Management Interface
+Administrator -> LMS: Add/Remove/Edit User
+LMS -> LMS: Update User Database
+LMS -> Administrator: User Management Confirmation
+deactivate LMS
+
+Administrator -> LMS: Manage System Settings
+activate LMS
+LMS -> Administrator: Show System Settings Interface
+Administrator -> LMS: Update Settings
+LMS -> LMS: Save Settings
+LMS -> Administrator: Settings Update Confirmation
+deactivate LMS
+
+Administrator -> LMS: Logout
+activate LMS
+LMS -> Administrator: Confirm Logout
+deactivate LMS
+
+@enduml

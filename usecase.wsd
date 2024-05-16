@@ -1,0 +1,70 @@
+@startuml
+
+left to right direction
+
+actor "Student" as Student
+actor "Instructor" as Instructor
+actor "Administrator" as Administrator
+
+rectangle "LMS System" {
+    
+    rectangle "Common Use Cases" {
+        usecase "Register" as Register
+        usecase "Login" as Login
+        usecase "Logout" as Logout
+    }
+    
+    rectangle "Student Use Cases" {
+        usecase "Enroll in Course" as EnrollCourse
+        usecase "View Course Materials" as ViewMaterials
+        usecase "Submit Assignment" as SubmitAssignment
+        usecase "Take Quiz" as TakeQuiz
+        usecase "View Grades" as ViewGrades
+        usecase "Participate in Forum" as ParticipateForum
+        usecase "View Announcements" as ViewAnnouncements
+    }
+    
+    rectangle "Instructor Use Cases" {
+        usecase "Create Course" as CreateCourse
+        usecase "Upload Materials" as UploadMaterials
+        usecase "Grade Assignment" as GradeAssignment
+        usecase "Manage Students" as ManageStudents
+        usecase "Post Announcements" as PostAnnouncements
+        usecase "Moderate Forum" as ModerateForum
+    }
+    
+    rectangle "Administrator Use Cases" {
+        usecase "Manage Users" as ManageUsers
+        usecase "Manage System Settings" as ManageSettings
+        usecase "View System Reports" as ViewReports
+        usecase "Backup System Data" as BackupData
+    }
+}
+
+Student --> Register
+Student --> Login
+Student --> Logout
+Student --> EnrollCourse
+Student --> ViewMaterials
+Student --> SubmitAssignment
+Student --> TakeQuiz
+Student --> ViewGrades
+Student --> ParticipateForum
+Student --> ViewAnnouncements
+
+Instructor --> Register
+Instructor --> Login
+Instructor --> Logout
+Instructor --> CreateCourse
+Instructor --> UploadMaterials
+Instructor --> GradeAssignment
+Instructor --> ManageStudents
+Instructor --> PostAnnouncements
+Instructor --> ModerateForum
+
+Administrator --> ManageUsers
+Administrator --> ManageSettings
+Administrator --> ViewReports
+Administrator --> BackupData
+
+@enduml
